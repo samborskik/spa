@@ -6,15 +6,18 @@ const reverse = function(arr) {
 }
 
 const sort = function(arr) {
-    arrSorted = [];
-    // ...
-    return arrSorted;
+    arr.sort()
+    return arr;
 }
 
 const even = function(arr) {
-    let arrEven = [];
-    // ...
-    return arrEven;
+    let array = [];
+  for (let i = 0; i < arr.length; i++){
+    if (arr[i] % 2 === 0){
+      array.push(arr[i]);
+    }
+  }
+  return array;
 }
 
 numbers = [8,3,2,1,5,4,6];
