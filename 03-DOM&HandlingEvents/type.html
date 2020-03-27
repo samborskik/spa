@@ -1,13 +1,15 @@
 <!DOCTYPE html>
 <html>
-	<head>
-		<title>Typing test</title>
-		<meta charset="UTF-8">
-	</head>
-	<body>
-		<h1>How fast are your fingers?</h1>
-		<h3>You have 30 seconds. Just start typing...</h3>
-		<p>Nam strzelać nie kazano. - Wstąpiłem na działo<br>
+
+<head>
+	<title>Typing test</title>
+	<meta charset="UTF-8">
+</head>
+
+<body>
+	<h1>How fast are your fingers?</h1>
+	<h3>You have 30 seconds. Just start typing...</h3>
+	<p>Nam strzelać nie kazano. - Wstąpiłem na działo<br>
 		I spójrzałem na pole; dwieście armat grzmiało.<br>
 		Artyleryi ruskiej ciągną się szeregi,<br>
 		Prosto, długo, daleko, jako morza brzegi;<br>
@@ -19,34 +21,35 @@
 		Czarne chorągwie na śmierć prowadzą zastępy.<br>
 		Przeciw nim sterczy biała, wąska, zaostrzona,<br>
 		Jak głaz bodzący morze, reduta Ordona.</p>
-		
-		<textarea rows="15" cols="50"></textarea><br>
-		
-		<script>
-			const displayAlert = () => {
-            	return document.getElementsByTagName('p')[0].addEventListener('copy', () => {
-               alert('Nie oszukuj! Przepisuj XD');
+
+	<textarea rows="15" cols="50"></textarea><br>
+
+	<script>
+		const displayAlert = () => {
+			return document.getElementsByTagName('p')[0].addEventListener('copy', () => {
+				alert('Nie oszukuj! Przepisuj XD');
 			});
-			
-         	};
-			function calculateWords() {
-					let characterCount = document.createTextNode('Liczba znaków = ' + document.querySelector('textarea').value.length)
-					let wordCount = document.createTextNode('Liczba słów = ' + document.querySelector('textarea').value.split(" ").length)
-					let wordsSpan = document.createElement('span')
-					let charactersSpan = document.createElement('span')
-					let br = document.createElement('br')
-					document.body.appendChild(wordsSpan)
-					document.body.appendChild(br)
-					document.body.appendChild(charactersSpan)
-					charactersSpan.appendChild(characterCount)
-					wordsSpan.appendChild(wordCount)
-			}
-			window.onload = function() {
-				return setTimeout(calculateWords, 30000)
-			}
-			displayAlert();
-			
-		</script>
-		
-	</body>
+
+		};
+
+		function calculateWords() {
+			let characterCount = document.createTextNode('Liczba znaków = ' + document.querySelector('textarea').value.length)
+			let wordCount = document.createTextNode('Liczba słów = ' + document.querySelector('textarea').value.split(" ").length)
+			let wordsSpan = document.createElement('span')
+			let charactersSpan = document.createElement('span')
+			let br = document.createElement('br')
+			document.body.appendChild(wordsSpan)
+			document.body.appendChild(br)
+			document.body.appendChild(charactersSpan)
+			charactersSpan.appendChild(characterCount)
+			wordsSpan.appendChild(wordCount)
+		}
+		window.onload = function () {
+			return setTimeout(calculateWords, 30000)
+		}
+		displayAlert();
+	</script>
+
+</body>
+
 </html>

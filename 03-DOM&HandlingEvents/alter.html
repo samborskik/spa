@@ -1,57 +1,60 @@
 <!DOCTYPE html>
 <html>
-	<head>
-		<title>Pink Floyd</title>
-		<meta charset="UTF-8">
-	</head>
-	<body ondblclick="changeBackgroundColor()">
-		<h1 onclick="addToTitle()">Another Brick in the Wall</h1>
-		<h3 onclick="displayBandDescription()">Pink Floyd</h3>
-		<p onclick="displayTextInItalics()">We don't need no education<br>
+
+<head>
+	<title>Pink Floyd</title>
+	<meta charset="UTF-8">
+</head>
+
+<body ondblclick="changeBackgroundColor()">
+	<h1 onclick="addToTitle()">Another Brick in the Wall</h1>
+	<h3 onclick="displayBandDescription()">Pink Floyd</h3>
+	<p onclick="displayTextInItalics()">We don't need no education<br>
 		We don't need no thought control<br>
 		No dark sarcasm in the classroom<br>
 		Teachers leave them kids alone<br>
 		Hey! Teachers! Leave them kids alone<br>
 		All in all it's just another brick in the wall<br>
 		All in all you're just another brick in the wall</p>
-		
-		<p style="visibility: hidden;">Pink Floyd were an English rock band formed in London.<br>
+
+	<p style="visibility: hidden;">Pink Floyd were an English rock band formed in London.<br>
 		They achieved international acclaim with their progressive<br>
 		and psychedelic music.</p>
-		
-		<script>
-			const addToTitle = () => {
-				return document.getElementsByTagName("h1")[0].append(" (Part 2)");
-			}
 
-			const displayBandDescription = () => {
-				return document.getElementsByTagName('p')[1].setAttribute("style", "visibility: visible");
-			}
+	<script>
+		const addToTitle = () => {
+			return document.getElementsByTagName("h1")[0].append(" (Part 2)");
+		}
 
-			const displayTextInItalics = () => {
-            	return document.getElementsByTagName('p')[0].setAttribute('style', 'font-style: italic;');
-			 }
-			 
-			const changeBackgroundColor = () => {
-				return document.body.style.backgroundColor="yellow";
-			}
+		const displayBandDescription = () => {
+			return document.getElementsByTagName('p')[1].setAttribute("style", "visibility: visible");
+		}
 
-			const displayAlert = () => {
-            return document.getElementsByTagName('p')[0].addEventListener('copy', () => {
-               alert('Nie wolno kopiować tekstu utworu! Prawa autorskie.');
-            });
-		 };
-		 
-		 const displayImageOfBand = () => {
-            let getDesc = document.getElementsByTagName('p')[1]
-            let createImgElement = document.createElement('img')
-            return getDesc.addEventListener('click', () => {
-              document.body.appendChild(createImgElement).setAttribute('src', 'Pink_Floyd_-_all_members.jpg')
-            })
-        	}     
+		const displayTextInItalics = () => {
+			return document.getElementsByTagName('p')[0].setAttribute('style', 'font-style: italic;');
+		}
 
-		 displayAlert();
-		 displayImageOfBand();	
-		</script>
-	</body>
+		const changeBackgroundColor = () => {
+			return document.body.style.backgroundColor = "yellow";
+		}
+
+		const displayAlert = () => {
+			return document.getElementsByTagName('p')[0].addEventListener('copy', () => {
+				alert('Nie wolno kopiować tekstu utworu! Prawa autorskie.');
+			});
+		};
+
+		const displayImageOfBand = () => {
+			let getDesc = document.getElementsByTagName('p')[1]
+			let createImgElement = document.createElement('img')
+			return getDesc.addEventListener('click', () => {
+				document.body.appendChild(createImgElement).setAttribute('src', 'Pink_Floyd_-_all_members.jpg')
+			})
+		}
+
+		displayAlert();
+		displayImageOfBand();
+	</script>
+</body>
+
 </html>
