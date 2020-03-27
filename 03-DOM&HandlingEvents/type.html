@@ -23,7 +23,28 @@
 		<textarea rows="15" cols="50"></textarea><br>
 		
 		<script>
-			// a JavaScript code here ...
+			const displayAlert = () => {
+            	return document.getElementsByTagName('p')[0].addEventListener('copy', () => {
+               alert('Nie oszukuj! Przepisuj XD');
+			});
+			
+         	};
+			function calculateWords() {
+					let characterCount = document.createTextNode('Liczba znaków = ' + document.querySelector('textarea').value.length)
+					let wordCount = document.createTextNode('Liczba słów = ' + document.querySelector('textarea').value.split(" ").length)
+					let wordsSpan = document.createElement('span')
+					let charactersSpan = document.createElement('span')
+					let br = document.createElement('br')
+					document.body.appendChild(wordsSpan)
+					document.body.appendChild(br)
+					document.body.appendChild(charactersSpan)
+					charactersSpan.appendChild(characterCount)
+					wordsSpan.appendChild(wordCount)
+			}
+			window.onload = function() {
+				return setTimeout(calculateWords, 30000)
+			}
+			displayAlert();
 			
 		</script>
 		
