@@ -1,14 +1,25 @@
 <!DOCTYPE html>
 <html>
 <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Programming languages with chart.js</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.3/Chart.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+    
 </head>
 <body>
-  <script>
+    <div id="app">
+      <canvas id="chart">
+      </canvas>
+    </div>
+
+<script>
     var app = new Vue({
       el: '#app',
       data: {
-        films: [
+        languages: [
           {
             language: 'Python',
             popularity: 25.95
@@ -29,9 +40,41 @@
             language: 'Php',
             popularity: 7.37
           }
-        ] 
+        ],
+        languagesChart: null 
+      },
+      mounted() {
+        let goldChart = document.getElementById("chart").getContext("2d")
+        this.languagesChart = new Chart(goldChart, {
+        type: 'bar',
+        data: {
+            labels: [],
+            datasets: [{
+                label: 'Language popularity',
+                data:  []
+            }]
+        },
+        options: {
+            title: {
+                display: true,
+                text: 'Programming languages popularity',
+                fontSize: 40
+            }
+        }
+        })
+      },
+      methods: {
+        getData() {
+          this.languages.forEach(language => {
+            this.languagesChart.data.labels.push(language.language)
+            this.languagesChart.data.datasets[0].data.push(language.popularity)
+            this.languagesChart.update()
+          })
+        }
       }
-    });
+    })
+
+    app.getData()
   </script>
 </body>
 </html>
