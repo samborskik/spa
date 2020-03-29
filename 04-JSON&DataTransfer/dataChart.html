@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Data charts using Chart.js</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.3/Chart.min.js"></script>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+</head>
+<body>
+    <div class="container">
+        <canvas id="chart">
+
+        </canvas>
+    </div>
+
+    <script>
+        let chart = document.getElementById("chart").getContext("2d")
+        let goldChart = new Chart(chart, {
+            type: 'line',
+            data: {
+                labels: [],
+                datasets: [{
+                    label: 'Price',
+                    data:  []
+                }]
+            },
+            options: {
+                title: {
+                    display: true,
+                    text: 'Gold prices in last 10 days',
+                    fontSize: 40
+                }
+            }
+        })
+
+        const getData = () => {
+            let method = "GET"
+            let api = `http://api.nbp.pl/api/cenyzlota/last/10?format=json`
+            let req = new XMLHttpRequest()
+            req.open(method, api)
+            req.onreadystatechange = function() {
+                if(this.readyState == 4 && this.status == 200) {
+                    let gold = JSON.parse(this.responseText)
+                    for(let i=0; i<10; i++) {
+                        goldChart.data.labels.push(gold[i].data)
+                        goldChart.data.datasets[0].data.push(gold[i].cena)
+                        goldChart.update()
+                    }
+                }
+            }
+            req.send()
+        }
+
+        getData()
+    </script>
+</body>
+</html>
