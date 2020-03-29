@@ -1,12 +1,47 @@
 <!DOCTYPE html>
 <html>
+
 <head>
-    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
 </head>
+
 <body>
+  <div id="app">
+    <p class="title">EMPLOYEE RECORD</p>
+    <p>Name 1: {{ name1 }}</p>
+    <p v-if="name2 !== '' ">Name 2: {{ name2 }}</p>
+    <p>Surname: {{ surname }}</p>
+    <p v-if="nationality === 'Polish' ">Pesel: {{ pesel }}</p>
+    <p v-else>Nationality: {{ nationality }}</p>
+    <p>Address: {{ address }}</p>
+  </div>
+
+  <div id="app1">
+    <p class="title">EMPLOYEE RECORD</p>
+    <p>Name 1: {{ name1 }}</p>
+    <p v-if="name2 !== '' ">Name 2: {{ name2 }}</p>
+    <p>Surname: {{ surname }}</p>
+    <p v-if="nationality === 'Polish' ">Pesel: {{ pesel }}</p>
+    <p v-else>Nationality: {{ nationality }}</p>
+    <p>Address: {{ address }}</p>
+  </div>
+
   <script>
     var app = new Vue({
       el: '#app',
+      data: {
+        name1: 'John',
+        name2: '',
+        surname: 'Brown',
+        foreigner: true,
+        nationality: 'USA',
+        pesel: '92021708229',
+        address: 'Holland Drive 4, Chicago'
+      }
+    });
+
+    var app1 = new Vue({
+      el: '#app1',
       data: {
         name1: 'Adam',
         name2: 'Jan',
@@ -14,9 +49,26 @@
         foreigner: false,
         nationality: 'Polish',
         pesel: '92021708229',
-        address: 'ul. Szeroka 3, Kraków',
+        address: 'ul. Szeroka 3, Kraków'
+      }
     });
   </script>
 
+  <style>
+    #app, #app1 {
+      font-family: Consolas, monaco, monospace;
+      margin: 10px 0;
+      padding: 0;
+    }
+    p {
+      margin: 0;
+    }
+
+    .title {
+      font-weight: bold;
+      ;
+    }
+  </style>
 </body>
+
 </html>
