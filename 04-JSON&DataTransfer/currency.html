@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Currencies</title>
+		<meta charset="UTF-8">
+	</head>
+	<body>
+		<h1>Currencies</h1>
+		<p>Click the button and look at current prices of different currencies</p>
+		<input type="button" value="Display currencies" onclick="connect()">
+		<p id="eur"></p>
+		<p id="usd"></p>
+		<p id="gbp"></p>
+
+		<script>
+			const connect = () => {
+				const currencies = ['eur', 'usd', 'gbp']
+				let method = "GET"
+				currencies.forEach((item) => {
+					let req = new XMLHttpRequest()
+					let api = `http://api.nbp.pl/api/exchangerates/rates/a/${item}/?format=json`
+					req.open(method, api)
+					req.onreadystatechange = function() {
+						if(this.readyState == 4 && this.status == 200) {
+							let currency = JSON.parse(this.responseText)
+							document.getElementById(`${item}`).innerHTML = `${item.toUpperCase()} : ${currency.rates[0].mid} PLN`
+						}
+					}
+					req.send()
+				})
+			}
+
+		</script>
+
+	</body>
+</html>
