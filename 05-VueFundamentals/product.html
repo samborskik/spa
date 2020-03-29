@@ -1,10 +1,21 @@
 <!DOCTYPE html>
 <html>
 <head>
+    <link href="https://fonts.googleapis.com/css?family=Inconsolata:400,700&display=swap" rel="stylesheet">
     <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
 </head>
 <body>
-  <h1>Grades</h1>    
+  <div id="app" style="font-family: 'Inconsolata', monospace;">
+    <h3>RECEIPT</h3>
+    <p>-------------------</p>
+    <p>Product: {{ product.name }}</p>
+    <p>Unit Price: {{ product.unitPrice }} zł</p>
+    <p>Quantity: {{ product.quantity }}</p>
+    <p>Amount: {{ product.unitPrice*product.quantity }} zł</p>
+    <p>VAT Tax Rate: {{ product.VAT }}%</p>
+    <p>===================</p>
+    <p class="total">Total: {{ (product.unitPrice*product.quantity+(product.unitPrice*product.quantity*(product.VAT/100))).toFixed(2) }} zł</p>
+  </div>
 
   <script>
     var app = new Vue({
@@ -19,6 +30,17 @@
       }
     });
   </script>
+
+  <style>
+    h3, .total {
+      font-weight: bold; 
+    }
+
+    p, h3 {
+      margin: 0;
+      padding: 0;
+    }
+  </style>
 
 </body>
 </html>
