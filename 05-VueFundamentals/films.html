@@ -1,15 +1,32 @@
 <!DOCTYPE html>
 <html>
+
 <head>
-    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
 </head>
+
 <body>
+  <div id="app">
+    <table>
+      <thead>
+        <td>Title</td>
+        <td>Year</td>
+        <td>Director</td>
+        <td>Budget</td>
+      </thead>
+      <tr v-for="film in films">
+        <td>{{ film.title }}</td>
+        <td>{{ film.year }}</td>
+        <td>{{ film.director }}</td>
+        <td>${{ film.budget }}</td>
+      </tr>
+    </table>
+  </div>
   <script>
     var app = new Vue({
       el: '#app',
       data: {
-        films: [
-          {
+        films: [{
             title: 'Avatar',
             year: 2009,
             director: 'James Cameron',
@@ -33,10 +50,26 @@
             director: 'King Vidor',
             budget: 6000000
           }
-        ] 
-        }
+        ]
       }
     });
   </script>
+
+  <style>
+    table {
+      font-family: Calibri, sans-serif;
+      border-spacing: 0;
+      border-collapse: collapse;
+    }
+    thead td {
+      font-weight: bold;
+    }
+    td {
+      padding: 5px;
+      width: 25vw;
+      border: 1px solid black;
+    }
+  </style>
 </body>
+
 </html>
