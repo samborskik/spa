@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>People</title>
+		<meta charset="UTF-8">
+	</head>
+	<body>
+		<h1>People</h1>
+		<p>Click the button and look at people's data</p>
+        <input type="button" value="Display data" onclick="connect()">
+        <ol id="list">
+
+        </ol>
+
+		<script>
+			const connect = () => {
+				let method = "GET"
+				let req = new XMLHttpRequest()
+                let api = `./people.json`
+                req.open(method, api)
+				req.onreadystatechange = function() {
+					if(this.readyState == 4 && this.status == 200) {
+                        let data = JSON.parse(this.responseText)
+                        addListItem(data)
+					}
+                }
+				req.send()
+            }
+            
+            const addListItem = data => {
+                for(let i=0; i<data.length; i++) {
+                    let listItem = document.createElement("li")
+                    let personalData = document.createTextNode(`${data[i].name} ${data[i].surname.toUpperCase()}, ${data[i].country}`)
+                    listItem.appendChild(personalData)
+                    document.getElementById("list").appendChild(listItem)
+                }
+            }
+
+		</script>
+	</body>
+</html>
